@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Create{% endblock %}
+
+{% block content %}
+ <h2 class="flex flex-col gap-5 justify-center items-center bg-blue-500 w-full h-screen text-black">
+    {% if form.instance.pk %}
+        Edit Tweet
+    {% else %}
+        Create Tweet
+    {% endif %}
+    
+    <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="bg-orange-700 p-2 shadow-lg rounded-xl" type="submit">Submit</button>
+    </form>
+    <a href="{%url "list_tweets"%}" class="cursor-pointer">
+        Back to Feeds↩
+    </a>
+ </h2>
+{% endblock %}
